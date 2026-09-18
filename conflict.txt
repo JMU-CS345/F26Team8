@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 roadrunner
+=======
+HAHA conflict, amirite. Everyone loves issues - right friends?? 
+Anyways we should work on a GDD at some point, yk clarify some things...I may work on it...
+at some point...
+>>>>>>> 189d6d0a65336b849df008cea68e0819fe9adff8
