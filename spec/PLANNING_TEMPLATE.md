@@ -19,7 +19,7 @@
 ## 2. Sprint Goal
 
 *One or two sentences describing a playable outcome, not a list of tickets. e.g., "A player can create a character and enter the first dungeon."*
-A player can have a randomized dungeon with a room to move around in
+By the end of the sprint a player should be able to have a generated dungeon, a test room, and simple movement controls
 _
 
 ---
@@ -30,7 +30,7 @@ _
 
 **Velocity last sprint (points completed):** n/a *(Sprint 1: write "n/a")*
 
-**Average velocity so far:** n/a
+**Average velocity so far:** 9 stars
 
 **Known absences or reduced availability this sprint:** none so far
 
