@@ -63,7 +63,7 @@ class Dungeon {
 
   // Add a room and connect it to its parent
   addRoom(position, type) {
-    let newRoom = new Room(
+    let newRoom = new RoomGen(
       position.x,
       position.y,
       type
