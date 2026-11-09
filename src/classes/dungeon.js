@@ -16,20 +16,17 @@ class Dungeon {
     ];
   }
 
-  // Check whether a position is already occupied
   isOccupied(x, y) {
     return this.rooms.some(room =>
       room.x === x && room.y === y
     );
   }
 
-  // Find all available positions adjacent to exactly one room
   getAvailablePositions() {
     let available = [];
 
     for (let room of this.rooms) {
       for (let direction of this.directions) {
-
         let newX = room.x + direction.x;
         let newY = room.y + direction.y;
 
@@ -37,7 +34,6 @@ class Dungeon {
           continue;
         }
 
-        // Count neighboring rooms
         let neighbors = 0;
 
         for (let dir of this.directions) {
@@ -46,7 +42,6 @@ class Dungeon {
           }
         }
 
-        // Only allow one connection
         if (neighbors === 1) {
           available.push({
             x: newX,
@@ -61,7 +56,6 @@ class Dungeon {
     return available;
   }
 
-  // Add a room and connect it to its parent
   addRoom(position, type) {
     let newRoom = new RoomGen(
       position.x,
@@ -77,16 +71,14 @@ class Dungeon {
     this.rooms.push(newRoom);
   }
 
-  // Generate the dungeon
   generateDungeon() {
     this.rooms = [];
 
     // Create starting room
-    this.rooms.push(new Room(0, 0, "starting"));
+    this.rooms.push(new RoomGen(0, 0, "starting"));
 
     // Generate normal rooms
     for (let i = 0; i < NORMAL_ROOMS; i++) {
-
       let available = this.getAvailablePositions();
 
       let position = random(available);
@@ -107,31 +99,40 @@ class Dungeon {
     this.addRoom(bossPosition, "boss");
   }
 
-  // Draw all connections and rooms
+  // Find a room connected in the requested direction
+  getNeighbor(currentRoom, direction) {
+    let dir = this.directions.find(d => d.name === direction);
+
+    if (!dir || !currentRoom.connections[direction]) {
+      return null;
+    }
+
+    return this.rooms.find(room =>
+      room.x === currentRoom.x + dir.x &&
+      room.y === currentRoom.y + dir.y
+    );
+  }
+
+  // Draw the dungeon map (useful for debugging)
   draw() {
     if (this.rooms.length === 0) return;
 
-    // Calculate dungeon boundaries
     let minX = Math.min(...this.rooms.map(r => r.x));
     let maxX = Math.max(...this.rooms.map(r => r.x));
 
     let minY = Math.min(...this.rooms.map(r => r.y));
     let maxY = Math.max(...this.rooms.map(r => r.y));
 
-    // Center the dungeon
     let offsetX = width / 2 - ((minX + maxX) / 2) * GRID_SPACING;
     let offsetY = height / 2 - ((minY + maxY) / 2) * GRID_SPACING;
 
-    // Draw connections FIRST
     stroke(255);
     strokeWeight(8);
 
     for (let room of this.rooms) {
-
       let x = offsetX + room.x * GRID_SPACING;
       let y = offsetY + room.y * GRID_SPACING;
 
-      // Right doorway
       if (room.connections.right) {
         line(
           x + ROOM_SIZE / 2, y,
@@ -139,7 +140,6 @@ class Dungeon {
         );
       }
 
-      // Down doorway
       if (room.connections.down) {
         line(
           x, y + ROOM_SIZE / 2,
@@ -148,9 +148,7 @@ class Dungeon {
       }
     }
 
-    // Draw rooms SECOND
     for (let room of this.rooms) {
-
       let x = offsetX + room.x * GRID_SPACING;
       let y = offsetY + room.y * GRID_SPACING;
 

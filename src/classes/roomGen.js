@@ -15,7 +15,6 @@ class RoomGen {
     };
   }
 
-  // Return room color based on its type
   getRoomColor() {
     switch (this.type) {
       case "starting":
@@ -32,7 +31,6 @@ class RoomGen {
     }
   }
 
-  // Draw this room
   draw(x, y) {
     fill(this.getRoomColor());
     stroke(255);
@@ -41,7 +39,6 @@ class RoomGen {
     rectMode(CENTER);
     rect(x, y, ROOM_SIZE, ROOM_SIZE);
 
-    // Room label
     fill(255);
     noStroke();
 
