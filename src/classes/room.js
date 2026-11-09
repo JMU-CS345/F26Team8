@@ -1,53 +1,38 @@
 
-const ROOM_SIZE = 70;
-
 class Room {
-  constructor(x, y, type) {
-    this.x = x;
-    this.y = y;
-    this.type = type;
-
-    this.connections = {
-      up: false,
-      down: false,
-      left: false,
-      right: false
-    };
-  }
-
-  // Return room color based on its type
-  getRoomColor() {
-    switch (this.type) {
-      case "starting":
-        return color(60, 130, 230);
-
-      case "treasure":
-        return color(240, 195, 60);
-
-      case "boss":
-        return color(210, 65, 65);
-
-      case "normal":
-        return color(120, 120, 130);
+    constructor(img) {
+        this.img = img;
     }
-  }
 
-  // Draw this room
-  draw(x, y) {
-    fill(this.getRoomColor());
-    stroke(255);
-    strokeWeight(2);
+    loadRoom() {
+        imageMode(CORNER);
+        image(this.img, 0, 0, 900, 900);
+    }
 
-    rectMode(CENTER);
-    rect(x, y, ROOM_SIZE, ROOM_SIZE);
+    drawDoors(currentRoom) {
+        if (!currentRoom) return;
 
-    // Room label
-    fill(255);
-    noStroke();
+        const doorSize = 140;
+        const doorThickness = 15;
 
-    textAlign(CENTER, CENTER);
-    textSize(11);
+        rectMode(CENTER);
+        noStroke();
 
-    text(this.type, x, y);
-  }
+        // Top doorway
+        fill(currentRoom.connections.up ? "lime" : "red");
+        rect(450, doorThickness / 2, doorSize, doorThickness);
+
+        // Bottom doorway
+        fill(currentRoom.connections.down ? "lime" : "red");
+        rect(450, 900 - doorThickness / 2, doorSize, doorThickness);
+
+        // Left doorway
+        fill(currentRoom.connections.left ? "lime" : "red");
+        rect(doorThickness / 2, 450, doorThickness, doorSize);
+
+        // Right doorway
+        fill(currentRoom.connections.right ? "lime" : "red");
+        rect(900 - doorThickness / 2, 450, doorThickness, doorSize);
+    }
+
 }
