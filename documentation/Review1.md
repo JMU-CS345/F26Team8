@@ -6,19 +6,19 @@
 
 ## 1. Meeting Details
 
-**Date:** _
+**Date:** 11/9/2026
 
-**Scrum Master:** _
+**Scrum Master:** Thomas
 
-**Attendees:** _
+**Attendees:** Ta'zyah, Thomas, Kelsan, Caden
 
-**Absent:** _
+**Absent:** N/A
 
-**Presenter:** *(one member gives the whole demo)*
+**Presenter:** Thomas
 
-**Deployed build reviewed:** *(GitHub Pages URL)*
+**Deployed build reviewed:** 3a3426b (Git ID)
 
-**Release PR into `production`:** *(link; merge it before the review begins)*
+**Release PR into `production`:** (Done)
 
 ---
 
@@ -26,11 +26,11 @@
 
 *Tell the stakeholder whether the sprint delivered what it set out to.*
 
-**The goal we set:** _
+**The goal we set:** Establishing the basic groundwork for the dungeon and the player
 
 **Did we meet it?** *(Yes / Partly / No, and one sentence explaining why)*
 
-_
+Mostly, there wasn't any official art added, but the controls and dungeon creation/randomization process was established. 
 
 ---
 
@@ -42,34 +42,34 @@ _
 
 | Issue # | User story | Estimate | Owner | Done? | Built by |
 |---------|------------|----------|-------|-------|----------|
-|         |            |          |       |       |           |
-|         |            |          |       |       |           |
-|         |            |          |       |       |           |
-|         |            |          |       |       |           |
+|Random Dungeons         |As a Player, I want to explore randomly generated dungeon floors, so that each dungeon run feels different.            |3 stars          |Thomas       |Mostly       |Thomas           |
+|Cursor         |As a user I want a visible cursor            |1 Star          |Ta'zyah       |No       |N/A           |
+|Easy Restart         |As a Game Tester, I want to restart a dungeon run easily, so that I can quickly test different parts of the game.            |1 Star          |Undecided       |No       |N/A           |
+|Keyboard Control         | As a Player I want to be able to control the entire game with my keyboard            |1 Star          |Caden       |Yes       |Caden           |
 |         |            |          |       |       |           |
 
 ---
 
 ## 4. Metrics
 
-| | Points |
+| | Stars |
 |---|---|
-| Committed | |
-| Completed | |
-| Completion rate | % |
+| Committed |4|
+| Completed |1.5|
+| Completion rate | 25% |
 
 **Velocity history:**
 
 | Sprint | Committed | Completed |
 |--------|-----------|-----------|
-| 1      |           |           |
+| 1      |4           |1.5           |
 | 2      |           |           |
 | 3      |           |           |
 | 4      |           |           |
 
 **Burndown or board snapshot:** *(Attach a screenshot or link)*
 
-**What explains the difference between committed and completed?** _
+**What explains the difference between committed and completed?**  The difficulty of the issues and current time constraints of allowing us to work on the issues
 
 ---
 
@@ -79,15 +79,14 @@ _
 
 *Presenter: be ready to explain and answer questions about every completed story, including work you didn't build.*
 
-### Issue #_: *(story title)*
+### Issue #1: *Random Dungeons*
 
-- [ ] *(acceptance criterion)*
-- [ ] *(acceptance criterion)*
+- [X] *Dungeon map shows new arrangement on reset*
+- [X] *Rooms connect to reflect the randomized dungeon map*
 
-### Issue #_: *(story title)*
+### Issue #2: *Keyboard Controls*
 
-- [ ] *(acceptance criterion)*
-- [ ] *(acceptance criterion)*
+- [X] *Character moves accordingly to button presses*
 
 *(Repeat for each completed story.)*
 
@@ -99,8 +98,8 @@ _
 
 | Issue # | What remains | New estimate | Back in backlog? |
 |---------|--------------|--------------|------------------|
-|         |              |              | [ ]              |
-|         |              |              | [ ]              |
+|Cursor         |Adding Assets              |1 Star              | [X]              |
+|Easy Restart         |Implementation once dungeon creation is finished              |1 Star              | [X]              |
 
 ---
 
@@ -108,7 +107,7 @@ _
 
 *Record what the instructor said: what they liked, what should change, and any new priorities. (Sprint 4: write "n/a")*
 
-_
+They liked that we already got the dungeon randomization aspect down, and said that we should start focusing on the character attributes
 
 ---
 
@@ -116,11 +115,11 @@ _
 
 *How did the backlog change in response to the feedback? (Sprint 4: write "n/a")*
 
-**New stories added:** _
+**New stories added:**  (Not at the moment)
 
-**Priorities changed:** _
+**Priorities changed:** 2
 
-**Stories removed:** _
+**Stories removed:** None
 
 **If no change was needed, why not?** _
 
@@ -130,22 +129,22 @@ _
 
 *Give the stakeholder an honest picture of the build's quality.*
 
-**CI status on `production`:** *(passing / failing)*
+**CI status on `production`:** Outside of current index issue, Passing
 
-**Number of specs:** _
+**Number of specs:** 4
 
-**Known bugs in the deployed build:** _
+**Known bugs in the deployed build:** N/A
 
 ---
 
 ## 10. Checklist
 
-- [ ] Demo given from the deployed GitHub Pages build
-- [ ] Demo given by one presenter, crediting the members who built each story
+- [X] Demo given from the deployed GitHub Pages build
+- [X] Demo given by one presenter, crediting the members who built each story
 - [ ] Release PR merged before the review begins
-- [ ] Every committed item marked Done or Not Done
+- [X] Every committed item marked Done or Not Done
 - [ ] Every item marked Done has all its acceptance criteria checked in section 5
 - [ ] Metrics filled in, with the committed/completed difference explained
-- [ ] Stakeholder feedback recorded (Sprint 4: n/a)
+- [X] Stakeholder feedback recorded (Sprint 4: n/a)
 - [ ] Backlog updated, or the reason no change was needed explained (Sprint 4: n/a)
 - [ ] Report committed to `scrum/review/` via pull request by 11:59 p.m. on the day of the review
