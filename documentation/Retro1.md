@@ -1,4 +1,4 @@
-# Sprint Retrospective Report: Sprint _
+# Sprint Retrospective Report: Sprint 1
 
 *Copy this file into `scrum/retrospective/` using your team's naming format. Fill in every field. Replace the italic guidance with your team's information. Due by 11:59 p.m. on the day of the retrospective.*
 
@@ -8,11 +8,11 @@
 
 **Date:** 11/9/2026
 
-**Facilitator:** _
+**Facilitator:** 
 
-**Attendees:** _
+**Attendees:** Thomas, Ta'zyah, Caden, Kelsan
 
-**Absent:** _
+**Absent:** N/A
 
 ---
 
@@ -22,8 +22,9 @@
 
 | Action item | Owner | Done? | Did it help? |
 |-------------|-------|-------|--------------|
-|             |       |       |              |
-|             |       |       |              |
+|Random Dungeons            |Thomas       |Yes (mostly)      | N/A             |
+|Cursor             |Ta'zyah       |No       |N/A              |
+|Keyboard Controls             |Caden       |Yes       |N/A              |
 
 ---
 
@@ -31,13 +32,13 @@
 
 *Use these to ground the discussion in evidence.*
 
-**Points committed / completed:** _ / _
+**Stars committed / completed:** 6 / 4
 
-**PRs merged:** _
+**PRs merged:** 2
 
-**CI runs failed / total:** _ / _ *(In your repo's **Actions** tab, count the runs from this sprint's dates. Use the **Status** filter to find the failed ones.)*
+**CI runs failed / total:** 3 / 13 *(In your repo's **Actions** tab, count the runs from this sprint's dates. Use the **Status** filter to find the failed ones.)*
 
-**Stories carried over:** _
+**Stories carried over:** 2
 
 ---
 
@@ -49,20 +50,20 @@
 
 ### What went well
 
--
--
+- Getting the actual code to work, since implementation was smooth so far.
+- Gaining art ideas, as it helps ground the direction our game will look like
 -
 
 ### What did not go well
 
--
--
+- Setting up Github properly, as seen by our current hiccups (especially on the version control aspect)
+- Not being able to run the game at all (Only specific to Ta'zyah, browser issues)
 -
 
 ### What puzzled us or what we want to try
 
--
--
+- Figuring out character hitboxes
+- Creating the Overworld portion after importing assets
 
 ---
 
@@ -70,15 +71,15 @@
 
 *Pick the most important problem from above and ask "why?" until you reach something the team can change.*
 
-**Problem:** _
+**Problem:** Learning to use Github properly
+
+**Why?** It will break easily and be harder to navigate without understand how it works.
 
 **Why?** _
 
 **Why?** _
 
-**Why?** _
-
-**Root cause:** _
+**Root cause:** Experience, it really seems like a thing that only improves the more we use the website.
 
 ---
 
@@ -88,9 +89,9 @@
 
 | Action item | Owner | How we will know it worked |
 |-------------|-------|----------------------------|
-|             |       |                            |
-|             |       |                            |
-|             |       |                            |
+|Tilemap and Enemy/Character Asset creation             |Ta'zyah       |When it can be visibly seen within the game                            |
+|Menu Music             |Kelsan       |When it has been sent for review (as adding it comes later)                           |
+|Hitboxes             |Thomas       |Test running and visibly seeing test hitboxes within the game                            |
 
 ---
 
@@ -98,18 +99,19 @@
 
 *Did this retrospective show that a rule in CONSTITUTION.md isn't working? If so, propose the change here and make it through a pull request. If not, explain why no change is needed. (Sprint 4: write "n/a")*
 
-**Proposed change:** *(or "none")*
+**Proposed change:** *N?A*
 
-**Pull request:** *(link, or "none")*
+**Pull request:** *None*
 
 **If no change is needed, why not?** *(Explain why the current rules are working, citing something from this sprint.)*
+The only real issue is just time availability to work on Issues, otherwise everything is going well.
 
 ---
 
 ## 8. Checklist
 
-- [ ] Every member contributed observations
-- [ ] Last sprint's action items reviewed
+- [X] Every member contributed observations
+- [X] Last sprint's action items reviewed
 - [ ] A root cause identified
 - [ ] Action items have owners and success measures (Sprint 4: n/a)
 - [ ] Action items added to the board or next planning report (Sprint 4: n/a)
