@@ -6,8 +6,8 @@ let character;
 let charImg;
 
 function preload() {
-  roomImg = loadImage("assets/Room.png");
-  charImg = loadImage("assets/character.png");
+  roomImg = loadImage("src/assets/Room.png");
+  charImg = loadImage("src/assets/character.png");
 }
 
 function setup() {
