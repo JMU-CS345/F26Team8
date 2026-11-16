@@ -4,15 +4,36 @@ const PLAYER_SPEED = 5;
 const DOOR_WIDTH = 180;
 
 class Character {
-  constructor(img) {
+  constructor(img, element) {
     this.img = img;
-
+    this.element = element;
+    
     this.x = 450;
     this.y = 450;
 
     this.size = PLAYER_SIZE;
+    
+    this.setClassStats();
 
     this.currentRoom = null;
+  }
+
+  // Set's the player's stats to match their class (element)
+  setClassStats() {
+    switch (this.element) {
+      case "fire":
+        console.log("You are a fire mage!")
+        this.img = fireImg;
+        break;
+      case "ice":
+        console.log("You are an ice mage!")
+        this.img = iceImg;
+        break;
+      case "grass":
+        console.log("You are a grass mage!")
+        this.img = grassImg;
+        break;
+    }
   }
 
   // Set the player's current room

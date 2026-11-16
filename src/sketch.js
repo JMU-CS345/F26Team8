@@ -8,6 +8,9 @@ let charImg;
 function preload() {
   roomImg = loadImage("src/assets/Room.png");
   charImg = loadImage("src/assets/character.png");
+  fireImg = loadImage("src/assets/fire.png");
+  iceImg = loadImage("src/assets/ice.png");
+  grassImg = loadImage("src/assets/grass.png");
 }
 
 function setup() {
@@ -21,7 +24,7 @@ function setup() {
   room = new Room(roomImg);
 
   // Create the player
-  character = new Character(charImg);
+  character = new Character(charImg, "grass");
 
   // Start in the starting room
   character.setRoom(dungeon.rooms[0]);
