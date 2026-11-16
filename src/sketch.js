@@ -4,14 +4,16 @@ let room;
 let roomImg;
 let character;
 let charImg;
+let roomData;
 
 function preload() {
-  roomImg = loadImage("src/assets/Room.png");
+  roomData = loadJSON("src/rooms.json");
+  roomImg = loadImage("src/assets/DirtyDungeonTileMap.png");
   charImg = loadImage("src/assets/character.png");
 }
 
 function setup() {
-  createCanvas(900, 900);
+  createCanvas(960, 640); //width, height
 
   // Generate the dungeon
   dungeon = new Dungeon();
@@ -25,12 +27,14 @@ function setup() {
 
   // Start in the starting room
   character.setRoom(dungeon.rooms[0]);
+  noSmooth(); //keep this last please
 }
 
 function draw() {
   background(35);
 
-  room.loadRoom();
+  //room.loadRoom();
+  room.loadRoom(roomData.room6);
 
   // Draw temporary doorway indicators
   room.drawDoors(character.currentRoom);
