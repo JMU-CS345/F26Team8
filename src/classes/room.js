@@ -40,16 +40,16 @@ class Room {
                     case "": // Empty
                         image(this.img, (j * 64), (i * 64), 64, 64, 32, 32, 32, 32);
                         break;
-                    case "1": // Corner
+                    case "1": // Corner (Top Left)
                         image(this.img,(j * 64), (i * 64), 64, 64, 0, 0, 32, 32);
                         break;
-                    case "2": // Corner
+                    case "2": // Corner (Top Right)
                         image(this.img,(j * 64), (i * 64), 64, 64, 64, 0, 32, 32);
                         break;
-                    case "3": // Corner
+                    case "3": // Corner (Bottom Left)
                         image(this.img,(j * 64), (i * 64), 64, 64, 0, 64, 32, 32);
                         break;
-                    case "4": // Corner
+                    case "4": // Corner (Bottom Right)
                         image(this.img, (j * 64), (i * 64), 64, 64, 64, 64, 32, 32);
                         break;
                     case "T": //Top Wall
@@ -63,6 +63,24 @@ class Room {
                         break;
                     case "S2": // Right Wall
                         image(this.img, (j * 64),(i * 64), 64, 64, 64, 32, 32, 32);
+                        break;
+                    case "TD":
+                        image(this.img, (j * 64),(i * 64), 64, 64, 64, 128, 32, 32);
+                        break;
+                    case "BD":
+                        image(this.img, (j * 64),(i * 64), 64, 64, 64, 96, 32, 32);
+                        break;
+                    case "SD1":
+                        image(this.img, (j * 64),(i * 64), 64, 64, 0, 96, 32, 32);
+                        break;
+                    case "SD1_1":
+                        image(this.img, (j * 64),(i * 64), 64, 64, 0, 128, 32, 32);
+                        break;
+                    case "SD2":
+                        image(this.img, (j * 64),(i * 64), 64, 64, 32, 96, 32, 32);
+                        break;
+                    case "SD2_1":
+                        image(this.img, (j * 64),(i * 64), 64, 64, 32, 128, 32, 32);
                         break;
                 }
                 
