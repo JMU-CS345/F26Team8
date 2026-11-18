@@ -33,6 +33,7 @@ function setup() {
 function draw() {
   background(35);
 
+  cursor("src/assets/Cursor.png")
   //room.loadRoom();
   room.loadRoom(character.currentRoom);
 
