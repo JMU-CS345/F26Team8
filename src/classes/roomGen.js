@@ -31,7 +31,7 @@ class RoomGen {
     }
   }
 
-  draw(x, y) {
+  /*draw(x, y) {
     fill(this.getRoomColor());
     stroke(255);
     strokeWeight(2);
@@ -46,5 +46,5 @@ class RoomGen {
     textSize(11);
 
     text(this.type, x, y);
-  }
+  }*/
 }
