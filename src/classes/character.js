@@ -3,6 +3,7 @@ const PLAYER_SIZE = 64;
 const PLAYER_SPEED = 5;
 const DOOR_WIDTH = 180;
 
+let element = "";
 // Collision dimensions are independent from the rendered sprite size.
 const PLAYER_HITBOX_WIDTH = 42;
 const PLAYER_HITBOX_HEIGHT = 34;
@@ -11,11 +12,14 @@ const PLAYER_HITBOX_OFFSET_Y = 10;
 class Character {
   constructor(img) {
     this.img = img;
-
+    this.element = element;
+    
     this.x = 450;
     this.y = 450;
 
     this.size = PLAYER_SIZE;
+    
+    this.setClassStats();
 
     this.hitbox = {
       width: PLAYER_HITBOX_WIDTH,
@@ -26,6 +30,24 @@ class Character {
     this.showHitbox = false;
 
     this.currentRoom = null;
+  }
+
+  // Set's the player's stats to match their class (element)
+  setClassStats() {
+    switch (element) {
+      case "fire":
+        console.log("You are a fire mage!")
+        this.img = fireImg;
+        break;
+      case "ice":
+        console.log("You are an ice mage!")
+        this.img = iceImg;
+        break;
+      case "grass":
+        console.log("You are a grass mage!")
+        this.img = grassImg;
+        break;
+    }
   }
 
   // Set the player's current room
