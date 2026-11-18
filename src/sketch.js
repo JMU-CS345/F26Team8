@@ -14,6 +14,10 @@ let roomData;
 function preload() {
   roomImg = loadImage("src/assets/Room.png");
   charImg = loadImage("src/assets/character.png");
+  roomData = loadJSON("src/rooms.json");
+  fireImg = loadImage("src/assets/fire.png");
+  iceImg = loadImage("src/assets/ice.png");
+  grassImg = loadImage("src/assets/grass.png");
 }
 
 function setup() {
