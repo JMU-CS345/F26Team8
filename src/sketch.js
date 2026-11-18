@@ -12,9 +12,9 @@ let isSelectingClass = true;
 let roomData;
 
 function preload() {
-  roomData = loadJSON("src/rooms.json");
   roomImg = loadImage("src/assets/DirtyDungeonTileMap.png");
   charImg = loadImage("src/assets/character.png");
+  roomData = loadJSON("src/rooms.json");
   fireImg = loadImage("src/assets/fire.png");
   iceImg = loadImage("src/assets/ice.png");
   grassImg = loadImage("src/assets/grass.png");
