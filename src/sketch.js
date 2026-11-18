@@ -44,6 +44,10 @@ function draw() {
 
 // Press R to regenerate the dungeon
 function keyPressed() {
+  if (key === "i" || key === "I") {
+    character.showHitbox = !character.showHitbox;
+  }
+
   if (key === "r" || key === "R") {
     dungeon.generateDungeon();
 

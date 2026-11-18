@@ -23,6 +23,7 @@ class Character {
       offsetX: 0,
       offsetY: PLAYER_HITBOX_OFFSET_Y
     };
+    this.showHitbox = false;
 
     this.currentRoom = null;
   }
@@ -170,12 +171,16 @@ class Character {
     imageMode(CENTER);
     image(this.img, this.x, this.y, this.size, this.size);
 
-    // Uncomment while tuning the hitbox against the character artwork.
-    // const hitbox = this.getHitbox();
-    // noFill();
-    // stroke(0, 255, 0);
-    // rectMode(CORNERS);
-    // rect(hitbox.left, hitbox.top, hitbox.right, hitbox.bottom);
+    if (this.showHitbox) {
+      const hitbox = this.getHitbox();
+      push();
+      noFill();
+      stroke(0, 255, 0);
+      strokeWeight(2);
+      rectMode(CORNERS);
+      rect(hitbox.left, hitbox.top, hitbox.right, hitbox.bottom);
+      pop();
+    }
 
     // Display current room information (debugging)
     fill(255);
