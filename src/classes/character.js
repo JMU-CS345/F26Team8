@@ -1,23 +1,68 @@
 
-const PLAYER_SIZE = 70;
+const PLAYER_SIZE = 64;
 const PLAYER_SPEED = 5;
 const DOOR_WIDTH = 180;
+
+let element = "";
+// Collision dimensions are independent from the rendered sprite size.
+const PLAYER_HITBOX_WIDTH = 42;
+const PLAYER_HITBOX_HEIGHT = 34;
+const PLAYER_HITBOX_OFFSET_Y = 10;
 
 class Character {
   constructor(img) {
     this.img = img;
-
+    this.element = element;
+    
     this.x = 450;
     this.y = 450;
 
     this.size = PLAYER_SIZE;
+    
+    this.setClassStats();
+
+    this.hitbox = {
+      width: PLAYER_HITBOX_WIDTH,
+      height: PLAYER_HITBOX_HEIGHT,
+      offsetX: 0,
+      offsetY: PLAYER_HITBOX_OFFSET_Y
+    };
+    this.showHitbox = false;
 
     this.currentRoom = null;
+  }
+
+  // Set's the player's stats to match their class (element)
+  setClassStats() {
+    switch (element) {
+      case "fire":
+        console.log("You are a fire mage!")
+        this.img = fireImg;
+        break;
+      case "ice":
+        console.log("You are an ice mage!")
+        this.img = iceImg;
+        break;
+      case "grass":
+        console.log("You are a grass mage!")
+        this.img = grassImg;
+        break;
+    }
   }
 
   // Set the player's current room
   setRoom(room) {
     this.currentRoom = room;
+  }
+
+  // Return the hitbox in canvas coordinates, centered on the player.
+  getHitbox() {
+    return {
+      left: this.x + this.hitbox.offsetX - this.hitbox.width / 2,
+      right: this.x + this.hitbox.offsetX + this.hitbox.width / 2,
+      top: this.y + this.hitbox.offsetY - this.hitbox.height / 2,
+      bottom: this.y + this.hitbox.offsetY + this.hitbox.height / 2
+    };
   }
 
   // Reset the player to the starting room
@@ -40,17 +85,16 @@ class Character {
       return false;
     }
 
-    let halfSize = this.size / 2;
-
     // Check whether the player is aligned with the doorway
-    let doorRange = (DOOR_WIDTH - this.size) / 2;
+    let horizontalDoorRange = (DOOR_WIDTH - this.hitbox.width) / 2;
+    let verticalDoorRange = (DOOR_WIDTH - this.hitbox.height) / 2;
 
     let aligned = false;
 
     if (direction === "left" || direction === "right") {
-      aligned = Math.abs(this.y - height / 2) <= doorRange;
+      aligned = Math.abs(this.y + this.hitbox.offsetY - height / 2) <= horizontalDoorRange;
     } else {
-      aligned = Math.abs(this.x - width / 2) <= doorRange;
+      aligned = Math.abs(this.x + this.hitbox.offsetX - width / 2) <= verticalDoorRange;
     }
 
     if (!aligned) {
@@ -63,19 +107,19 @@ class Character {
     // Place the player just inside the opposite doorway
     switch (direction) {
       case "left":
-        this.x = width - halfSize - 1;
+        this.x = width - 1 - this.hitbox.offsetX - this.hitbox.width / 2;
         break;
 
       case "right":
-        this.x = halfSize + 1;
+        this.x = 1 - this.hitbox.offsetX + this.hitbox.width / 2;
         break;
 
       case "up":
-        this.y = height - halfSize - 1;
+        this.y = height - 1 - this.hitbox.offsetY - this.hitbox.height / 2;
         break;
 
       case "down":
-        this.y = halfSize + 1;
+        this.y = 1 - this.hitbox.offsetY + this.hitbox.height / 2;
         break;
     }
 
@@ -110,41 +154,55 @@ class Character {
       dy *= Math.SQRT1_2;
     }
 
-    let halfSize = this.size / 2;
-
     // Move horizontally
     this.x += dx * PLAYER_SPEED;
 
-    if (this.x < halfSize) {
+    let bounds = this.getHitbox();
+
+    if (bounds.left < 0) {
       if (!this.tryTransition(dungeon, "left")) {
-        this.x = halfSize;
+        this.x -= bounds.left;
       }
     }
 
-    if (this.x > width - halfSize) {
+    bounds = this.getHitbox();
+    if (bounds.right > width) {
       if (!this.tryTransition(dungeon, "right")) {
-        this.x = width - halfSize;
+        this.x -= bounds.right - width;
       }
     }
 
     // Move vertically
     this.y += dy * PLAYER_SPEED;
 
-    if (this.y < halfSize) {
+    bounds = this.getHitbox();
+    if (bounds.top < 0) {
       if (!this.tryTransition(dungeon, "up")) {
-        this.y = halfSize;
+        this.y -= bounds.top;
       }
     }
 
-    if (this.y > height - halfSize) {
+    bounds = this.getHitbox();
+    if (bounds.bottom > height) {
       if (!this.tryTransition(dungeon, "down")) {
-        this.y = height - halfSize;
+        this.y -= bounds.bottom - height;
       }
     }
 
     // Draw the character
     imageMode(CENTER);
     image(this.img, this.x, this.y, this.size, this.size);
+
+    if (this.showHitbox) {
+      const hitbox = this.getHitbox();
+      push();
+      noFill();
+      stroke(0, 255, 0);
+      strokeWeight(2);
+      rectMode(CORNERS);
+      rect(hitbox.left, hitbox.top, hitbox.right, hitbox.bottom);
+      pop();
+    }
 
     // Display current room information (debugging)
     fill(255);
