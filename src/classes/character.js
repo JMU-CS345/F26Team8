@@ -1,5 +1,5 @@
 
-const PLAYER_SIZE = 70;
+const PLAYER_SIZE = 64;
 const PLAYER_SPEED = 5;
 const DOOR_WIDTH = 180;
 
