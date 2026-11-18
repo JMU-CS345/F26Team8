@@ -20,21 +20,21 @@ function setup() {
   dungeon.generateDungeon();
 
   // Create the room background renderer
-  room = new Room(roomImg);
+  room = new Room(roomImg, roomData);
 
   // Create the player
   character = new Character(charImg);
 
   // Start in the starting room
   character.setRoom(dungeon.rooms[0]);
-  noSmooth(); //keep this last please
+  noSmooth(); // keep this last please
 }
 
 function draw() {
   background(35);
 
   //room.loadRoom();
-  room.loadRoom(roomData.room6);
+  room.loadRoom(character.currentRoom);
 
   // Draw temporary doorway indicators
   room.drawDoors(character.currentRoom);
