@@ -9,9 +9,11 @@ let iceImg;
 let grassImg;
 let classSelection;
 let isSelectingClass = true;
+let roomData;
 
 function preload() {
-  roomImg = loadImage("src/assets/Room.png");
+  roomData = loadJSON("src/rooms.json");
+  roomImg = loadImage("src/assets/DirtyDungeonTileMap.png");
   charImg = loadImage("src/assets/character.png");
   fireImg = loadImage("src/assets/fire.png");
   iceImg = loadImage("src/assets/ice.png");
@@ -19,14 +21,14 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(900, 900);
+  createCanvas(960, 640); //width, height
 
   // Generate the dungeon
   dungeon = new Dungeon();
   dungeon.generateDungeon();
 
   // Create the room background renderer
-  room = new Room(roomImg);
+  room = new Room(roomImg, roomData);
 
   // Create the player
   character = new Character(charImg);
@@ -36,12 +38,14 @@ function setup() {
 
   // Start in the starting room
   character.setRoom(dungeon.rooms[0]);
+  noSmooth(); // keep this last please
 }
 
 function draw() {
   background(35);
 
-  room.loadRoom();
+  //room.loadRoom();
+  room.loadRoom(character.currentRoom);
 
   if (isSelectingClass) {
     classSelection.draw();
@@ -58,6 +62,10 @@ function draw() {
 
 function keyPressed() {
   // Press R to regenerate the dungeon
+  if (key === "i" || key === "I") {
+    character.showHitbox = !character.showHitbox;
+  }
+
   if (key === "r" || key === "R") {
     dungeon.generateDungeon();
 
