@@ -3,8 +3,10 @@ const PLAYER_SIZE = 70;
 const PLAYER_SPEED = 5;
 const DOOR_WIDTH = 180;
 
+let element = "";
+
 class Character {
-  constructor(img, element) {
+  constructor(img) {
     this.img = img;
     this.element = element;
     
@@ -20,7 +22,7 @@ class Character {
 
   // Set's the player's stats to match their class (element)
   setClassStats() {
-    switch (this.element) {
+    switch (element) {
       case "fire":
         console.log("You are a fire mage!")
         this.img = fireImg;
